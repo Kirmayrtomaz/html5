@@ -4,12 +4,12 @@ Esse conteúdo representan uma série de informações e APIS sobre HTML5. Visan
 
 
 | API    |
-
+| ----- |
 | [Semântica - microdata](http://kirmayrtomaz.github.io/html5/semantica_microdata.html) |
 | [Semântica - wai-aria](http://kirmayrtomaz.github.io/html5/semantica_wai-aria.html) |
-| [Formulário](http://kirmayrtomaz.github.io/html5/projeto/index.html |
-| [Drag-Drop](http://kirmayrtomaz.github.io/html5/projeto/index2.html |
-| [localStorage](http://kirmayrtomaz.github.io/html5/projeto/index.html |
+| [Formulário](http://kirmayrtomaz.github.io/html5/projeto/index.html) |
+| [Drag-Drop](http://kirmayrtomaz.github.io/html5/projeto/index2.html) |
+| [localStorage](http://kirmayrtomaz.github.io/html5/projeto/index.html) |
 | [Mídia - video](http://kirmayrtomaz.github.io/html5/midia_video.html) |
 | [Mídia - Audio](http://kirmayrtomaz.github.io/html5/midia_audio.html) |
 | [WebGL](http://kirmayrtomaz.github.io/html5/webgl/index.html) |
@@ -17,3 +17,9 @@ Esse conteúdo representan uma série de informações e APIS sobre HTML5. Visan
 | [Geolocation](http://kirmayrtomaz.github.io/html5/geolocation.html) |
 | [Notification](http://kirmayrtomaz.github.io/html5/projeto/index3.html) |
 | [Web Worker](http://kirmayrtomaz.github.io/html5/projeto/webworker.html) |
+
+
+
+## Slide
+
+[slide](https://docs.google.com/presentation/d/1I62YNxJTVAEaD8Up5eN8VYi76ZlqN0GIbRNYz8ytI40/edit?usp=sharing) da apresentação Front-end Manaus
