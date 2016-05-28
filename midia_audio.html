@@ -1,0 +1,263 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <title>Título da Página (Estrutura básica de uma página com HTML 5)</title>
+    <link href="https://www.uninorte.com.br/wp-content/themes/uninorte/res/css/styles.min.css?ver=4.4.2" rel="stylesheet" />
+
+</head>
+
+<body>
+  <!-- <audio id="demo" src="audio.mp3"></audio>
+  <div>
+    <button onclick="document.getElementById('demo').play()">Reproduzir o áudio</button>
+    <button onclick="document.getElementById('demo').pause()">Pausar o áudio</button>
+    <button onclick="document.getElementById('demo').volume+=0.1">Aumentar o volume</button>
+    <button onclick="document.getElementById('demo').volume-=0.1">Diminuir o volume</button>
+  </div> -->
+
+<main class="aluno">
+<div class="midias" id="midia">
+  <div class="midias" id="midia">
+  	<div class="estrutura cf">
+
+  		<!-- <img class="play1-img" src="<?php  echo res('img/play1-midia.png'); ?>">
+  		<img class="play2-img" src="<?php  echo res('img/play2-midia.png'); ?>">
+  		<img class="play3-img" src="<?php  echo res('img/play3-midia.png'); ?>"> -->
+  		<h2>Mídias</h2>
+  <div class="podcast-mainwrap">
+    <div class="podcast">
+      <h3>Podcast Uninorte</h3>
+      <div class="podcast-play">
+        <button class="js-play"></button>
+        <div class="podcast-progressbar">
+          <div class="podcast-progress"><div class="js-progress" style="width: 0%;background-color: #F78311;
+  height: 100%;"></div></div>
+        </div>
+        <button class="js-volume"></button>
+      </div>
+      <h4 class="js-soundclound-autor"></h4>
+      <span class="js-soundclound-duracao"></span>
+    </div>
+    <div class="media-list">
+      <div class="pod-wrap">
+        <ul class="js-playlist-soundclound">
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>
+
+<script>
+
+function gerarData(dataString){
+
+
+	var today = new Date(dataString);
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+
+	if(dd<10) {
+	    dd='0'+dd
+	}
+
+	if(mm<10) {
+	    mm='0'+mm
+	}
+
+	today = mm+'/'+dd+'/'+yyyy;
+	return today;
+	// console.log(today);
+}
+
+function dias_atras(string_date){
+
+	data_atual = new Date();
+
+	data_passada = new Date(string_date);
+	resultado = data_atual - data_passada;
+
+	var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+
+	var diffDays = Math.round(Math.abs((data_passada.getTime() - data_atual.getTime())/(oneDay)));
+
+
+	if(diffDays > 730)
+	{
+		diffDays = parseInt(diffDays / 365);
+		diffDays = diffDays + " anos atrás";
+
+	}
+	else
+	{
+		diffDays = diffDays + " dia atrás"
+	}
+	return diffDays;
+
+}
+
+
+//player soundclound
+ var player = {};
+
+function carregar_playlist(playlist){
+
+  	musicas = 0;
+  	playlist.tracks.forEach(function(track) {
+
+  		data_sound = 	 dias_atras(track.created_at);
+  		if(musicas == 0 ){
+  			atualiza_player(track.title,data_sound + " - "+ track.playback_count+" visualizações",track.id);
+			document.querySelector('.js-play').dataset.id = track.id;
+		}
+  		else
+  		{
+
+	   		$(".js-playlist-soundclound").append("<li class='cf js-soundclound-music' data-id='"+track.id+"'><div><h4>"+ track.title +"</h4>"
+	   		+"<span> "+ data_sound + " - "+ track.playback_count+" visualizações</span>"
+			+"</div></li>");
+   		}
+
+   		musicas++;
+  });
+
+}
+
+
+function atualiza_player(title,view,id){
+
+	document.querySelector('.js-soundclound-autor').innerHTML = title;
+	document.querySelector('.js-soundclound-duracao').innerHTML = view;
+
+
+}
+
+$('.pod-wrap').on('click','.js-soundclound-music',function  () {
+	var id = $(this).data('id');
+	var title = $(this).find("h4").text();
+	var view = $(this).find("span").text();
+	atualiza_player(title,view,id);
+	executarMusica($(this).data('id'));
+
+});
+
+var volume = 0;
+
+$('.podcast-progress').click(function(e){
+	var duracaoTotal = player.streamInfo.duration;
+	var tamnho = this.offsetWidth
+	var parentOffset = $(this).offset();
+	var relativeXPosition = (e.pageX - parentOffset.left); //offset -> method allows you to retrieve the current position of an element 'relative' to the document
+
+	posicaoPorcentagem = (relativeXPosition *100)/tamnho;
+
+	posicaoFinal = parseInt( (posicaoPorcentagem * duracaoTotal) / 100);
+
+	player.seek(posicaoFinal);
+
+});
+
+$('.js-volume').click(function  () {
+	player.setVolume(volume);
+	volume = volume === 100 ? 0 : 100;
+
+	if(volume == 0){
+		this.style.backgroundImage = "url(<?php echo res('img/volume_podcast.png'); ?>)";
+	}else{
+		this.style.backgroundImage = "url(<?php echo res('img/midia_audio_off.png'); ?>)";
+
+	}
+
+
+});
+
+var play = false;
+
+$('.js-play').click(function  () {
+	if(!player.play){
+		executarMusica(this.dataset.id);
+	}else{
+
+
+		if(play){
+			player.play();
+		}
+		else{
+			player.pause();
+		}
+
+		play = (play === true) ? false : true;
+	}
+
+	if(!play){
+		this.style.backgroundImage = "url(<?php echo res('img/midia_pause.png'); ?>)";
+	}else{
+		this.style.backgroundImage = "url(<?php echo res('img/play_podcast.png'); ?>)";
+
+	}
+
+
+
+
+});
+
+
+</script>
+
+<script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+<script>
+
+
+SC.initialize({
+  client_id: '2f935715e66645f3fa8b04de59288ef0'
+});
+
+
+SC.get('playlists/62624916').then(function(playlist) {
+
+	carregar_playlist(playlist);
+
+
+  // playlist.tracks.forEach(function(track) {
+  //   console.log(track.title);
+  // });
+});
+function executarMusica(id){
+
+	SC.stream('/tracks/'+id).then(function(player_){
+
+	  player_.play();
+
+	setInterval(function(){
+		atualizaStatus();
+	},1000);
+
+	   player = player_;
+	});
+
+
+}
+
+
+function atualizaStatus(){
+
+	var tamanho = this.offsetWidth;
+	var duracaoTotal = player.streamInfo.duration;
+	var duracaoAtual = player.currentTime();
+	var resultado = (100 * duracaoAtual )/duracaoTotal;
+
+	document.querySelector('.js-progress').style.width = resultado + "%";
+}
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+$azul:#3B3294;
+
+$cinza:#4e4e4e;
+
+
+
+.titulo{
+    padding: 30px 0 0 0;
+    color: #3B3294;
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 110%;
+    font-weight: 400;
+}
+    
+body {
+    display: flex;
+    min-height: 90vh;
+    flex-direction: column;
+  font: 400 48px/56px Lato, "Arial", "Helvetica Neue", "Helvetica", sans-serif;
+  background: -webkit-linear-gradient( -250deg , #0B5A84,#143D69); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient( -250deg , #0B5A84,#143D69); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient( -250deg , #0B5A84,#143D69); /* For Firefox 3.6 to 15 */
+  background: linear-gradient( -250deg , #0B5A84,#143D69); /* Standard syntax */
+}
+
+header{
+    
+}
+
+.formulario{
+    @extend .center-div;
+    
+    .field{
+
+    }
+    .estrutura-dinamica{
+         margin: 5px 0px!important;
+
+ 
+    }
+    input{
+        margin: 5px 0px!important;
+    }
+            
+         .default.text{
+             padding: 0px!important;
+         }
+         
+                 
+         .menu-tags{
+                 min-width: calc(101.5%)!important;
+         }
+}
+

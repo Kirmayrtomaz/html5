@@ -1,0 +1,93 @@
+
+.titulo {
+  padding: 30px 0 0 0;
+  color: #3B3294;
+  text-transform: uppercase;
+  font-size: 22px;
+  line-height: 110%;
+  font-weight: 400; }
+
+body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 90vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font: 400 48px/56px Lato, "Arial", "Helvetica Neue", "Helvetica", sans-serif;
+  background: -webkit-linear-gradient(-250deg, #0B5A84, #143D69);
+  /* For Safari 5.1 to 6.0 */
+  /* For Opera 11.1 to 12.0 */
+  /* For Firefox 3.6 to 15 */
+  background: -webkit-linear-gradient(340deg, #0B5A84, #143D69);
+  background: linear-gradient(-250deg, #0B5A84, #143D69);
+  /* Standard syntax */ }
+
+.formulario .estrutura-dinamica {
+  margin: 5px 0px !important; }
+
+.formulario input {
+  margin: 5px 0px !important; }
+
+.formulario .default.text {
+  padding: 0px !important; }
+
+.formulario .menu-tags {
+  min-width: calc(101.5%) !important; }
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 24, 2016, 6:06:04 PM
+    Author     : kirmayr
+*/
+hr.sombra {
+  border: 0;
+  height: 1.79px;
+  position: relative;
+  margin: 0.3em 0;
+  /* Keep other elements away from pseudo elements*/
+  color: red; }
+
+hr.sombra:before {
+  top: -0.2em;
+  height: 0.5em; }
+
+hr.sombra:after {
+  content: '';
+  height: 0.1em;
+  /* half the height of :before */
+  top: 1px;
+  /* height of hr*/ }
+
+hr.sombra:before, hr.sombra:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  right: 0;
+  left: 0;
+  margin: auto; }
+
+hr.sombra-vermelha, hr.sombra-vermelha:before {
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, red), color-stop(70%, transparent));
+  background: -webkit-radial-gradient(center, ellipse cover, red 0%, transparent 70%);
+  background: -webkit-radial-gradient(center, ellipse, red 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, red 0%, transparent 70%); }
+
+hr.sombra-cinza, hr.sombra-cinza:before {
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #BFBCBC), color-stop(70%, transparent));
+  background: -webkit-radial-gradient(center, ellipse cover, #BFBCBC 0%, transparent 70%);
+  background: -webkit-radial-gradient(center, ellipse, #BFBCBC 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, #BFBCBC 0%, transparent 70%); }
+
+.center-div, .formulario {
+  right: 0;
+  left: 0;
+  margin: auto !important; }
