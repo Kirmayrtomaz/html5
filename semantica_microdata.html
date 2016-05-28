@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <title>Título da Página (Estrutura básica de uma página com HTML 5)</title>
+    <link href="css/seu-stylesheet.css" rel="stylesheet" />
+    <script src="scripts/seu-script.js"></script>
+</head>
+
+<body>
+
+  <!------------------- microdata ------------------------------------>
+
+    <div itemscope itemtype="http://data-vocabulary.org/Organization">
+        <h1 itemprop="name">FrotEndManaus </h1>
+        <p itemprop="tel">11 9999-9999</p>
+        <p itemprop="address" itemscope itemtype="http://data-vocabulary.org/Address">
+            <span itemprop="street-address">Avenida V8, 123</span>,
+            <span itemprop="locality">Manaus</span>,
+            <span itemprop="region">AM</span>.
+        </p>
+    </div>
+
+    <!------------------- microdata ------------------------------------>
+</body>
+
+</html>
